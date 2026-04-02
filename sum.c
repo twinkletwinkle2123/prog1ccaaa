@@ -7,7 +7,7 @@ int main()
      printf("Enter the 2nd numb: ");
     scanf("%d",&b);
     c=a+b;
-    printf("Sum of two nujm :%d\n");
+    printf("Sum of two num :%d\n");
     return 0;
 
 }
