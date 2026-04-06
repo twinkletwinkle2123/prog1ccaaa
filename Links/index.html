@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aesthetic Minimalist Landing</title>
+    <!-- Google Fonts for modern typography -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Aesthetic soft gradient background */
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            overflow: hidden;
+        }
+
+        /* Glassmorphism Card Container */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 50px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: #4a4a4a;
+            font-weight: 600;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #6d6d6d;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Call to Action Button */
+        .cta-btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background-color: #fff;
+            color: #4a4a4a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            background-color: #4a4a4a;
+            color: #fff;
+        }
+
+        /* Decorative blobs */
+        .blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: #d4fc79;
+            filter: blur(80px);
+            z-index: -1;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .blob-1 { top: -10%; left: -10%; }
+        .blob-2 { bottom: -10%; right: -10%; background: #96e6a1; }
+    </style>
+</head>
+<body>
+
+    <!-- Decorative Elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Main Content -->
+    <div class="glass-card">
+        <h1>Simplify.</h1>
+        <p>Experience the beauty of minimal design. Our approach focuses on what matters most, stripping away the noise to leave only the essential.</p>
+        <a href="#" class="cta-btn">Get Started</a>
+    </div>
+
+</body>
+</html>
