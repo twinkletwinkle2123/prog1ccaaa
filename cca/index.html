@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #c3ecf7, #f5c6ec);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        h1 {
+            color: #6c63ff;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .emoji {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="emoji">✨💻</div>
+        <h1>Hello there!</h1>
+        <p>Your Flask app is running successfully 🚀</p>
+        <p>Hosted on Google App Engine 🌐</p>
+    </div>
+</body>
+</html>
