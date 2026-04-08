@@ -1,0 +1,85 @@
+import org.cloudbus.cloudsim.*;
+import org.cloudbus.cloudsim.core.CloudSim;
+
+import java.util.*;
+
+public class FCFS_Simple {
+
+    public static void main(String[] args) {
+
+        try {
+            // Step 1: Initialize
+            CloudSim.init(1, Calendar.getInstance(), false);
+
+            // Step 2: Create Datacenter
+            Datacenter dc = createDatacenter("DC1");
+
+            // Step 3: Create Broker
+            DatacenterBroker broker = new DatacenterBroker("Broker");
+            int id = broker.getId();
+
+            // Step 4: Create VM (FCFS)
+            Vm vm = new Vm(0, id, 1000, 1, 512, 1000, 10000, "Xen",
+                    new CloudletSchedulerSpaceShared()); // FCFS
+
+            broker.submitVmList(Arrays.asList(vm));
+
+            // Step 5: Create Cloudlets
+            UtilizationModel um = new UtilizationModelFull();
+
+            Cloudlet c1 = new Cloudlet(0, 40000, 1, 300, 300, um, um, um);
+            Cloudlet c2 = new Cloudlet(1, 20000, 1, 300, 300, um, um, um);
+
+            c1.setUserId(id);
+            c2.setUserId(id);
+
+            broker.submitCloudletList(Arrays.asList(c1, c2));
+
+            // Step 6: Start Simulation
+            CloudSim.startSimulation();
+
+            List<Cloudlet> result = broker.getCloudletReceivedList();
+
+            CloudSim.stopSimulation();
+
+            // Step 7: Output
+            System.out.println("FCFS Output:");
+            for (Cloudlet c : result) {
+                System.out.println("Cloudlet " + c.getCloudletId()
+                        + " finished at " + c.getFinishTime());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Datacenter creation
+    private static Datacenter createDatacenter(String name) {
+
+        List<Host> hostList = new ArrayList<>();
+
+        List<Pe> peList = new ArrayList<>();
+        peList.add(new Pe(0, new PeProvisionerSimple(1000)));
+
+        hostList.add(new Host(0,
+                new RamProvisionerSimple(2048),
+                new BwProvisionerSimple(10000),
+                1000000,
+                peList,
+                new VmSchedulerSpaceShared(peList)));
+
+        DatacenterCharacteristics characteristics =
+                new DatacenterCharacteristics(
+                        "x86", "Linux", "Xen",
+                        hostList, 10.0, 3.0, 0.05, 0.001, 0.0);
+
+        try {
+            return new Datacenter(name, characteristics,
+                    new VmAllocationPolicySimple(hostList),
+                    new LinkedList<Storage>(), 0);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+}
