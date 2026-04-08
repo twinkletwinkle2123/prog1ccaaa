@@ -1,2 +1,4 @@
-flask==3.0.0
-gunicorn==22.2.0
+gsutil cp index.html gs://medini-static-site123
+gsutil cp index.html gs://medini-static-site123
+gsutil iam ch allUsers:objectViewer gs://medini-static-site123
+https://storage.googleapis.com/medini-static-site123/index.html
